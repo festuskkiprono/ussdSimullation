@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USSD Phone Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="phone">
+    <div class="speaker">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="brand" id="brand"></div>
+
+    <div class="screen">
+      <div class="screen-message" id="message"></div>
+      <div class="screen-input" id="input"></div>
+    </div>
+
+    <div class="controls">
+      <button class="call" id="callBtn" title="Call / Send (Enter)">&#9990;</button>
+      <button class="clear" id="clearBtn" title="Clear (Backspace)">C</button>
+      <button class="end" id="endBtn" title="End (Esc)">&#10006;</button>
+    </div>
+
+    <div class="keypad" id="keypad"></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
