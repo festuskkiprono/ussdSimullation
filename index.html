@@ -7,26 +7,48 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="phone">
-    <div class="speaker">
+  <main class="phone" aria-label="USSD phone simulator">
+    <!-- Earpiece -->
+    <div class="speaker" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span>
     </div>
 
-    <div class="brand" id="brand"></div>
+    <!-- Brand -->
+    <div class="brand" id="brand">G PHONE</div>
 
-    <div class="screen">
-      <div class="screen-message" id="message"></div>
-      <div class="screen-input" id="input"></div>
-    </div>
+    <!-- LCD screen -->
+    <section class="screen" aria-label="Phone screen">
+      <div class="screen-message" id="message" aria-live="polite">Dial a USSD code
+eg *144#</div>
+      <div class="screen-input" id="input" aria-label="Typed input"></div>
+    </section>
 
+    <!-- Call / Clear / End -->
     <div class="controls">
-      <button class="call" id="callBtn" title="Call / Send (Enter)">&#9990;</button>
-      <button class="clear" id="clearBtn" title="Clear (Backspace)">C</button>
-      <button class="end" id="endBtn" title="End (Esc)">&#10006;</button>
+      <button type="button" class="call" id="callBtn" title="Call / Send (Enter)" aria-label="Call">&#9990;</button>
+      <button type="button" class="clear" id="clearBtn" title="Clear (Backspace)" aria-label="Clear">C</button>
+      <button type="button" class="end" id="endBtn" title="End (Esc)" aria-label="End">&#10006;</button>
     </div>
 
-    <div class="keypad" id="keypad"></div>
-  </div>
+    <!-- Keypad -->
+    <div class="keypad" id="keypad">
+      <button type="button" class="key" data-key="1">1<small></small></button>
+      <button type="button" class="key" data-key="2">2<small>abc</small></button>
+      <button type="button" class="key" data-key="3">3<small>def</small></button>
+
+      <button type="button" class="key" data-key="4">4<small>ghi</small></button>
+      <button type="button" class="key" data-key="5">5<small>jkl</small></button>
+      <button type="button" class="key" data-key="6">6<small>mno</small></button>
+
+      <button type="button" class="key" data-key="7">7<small>pqrs</small></button>
+      <button type="button" class="key" data-key="8">8<small>tuv</small></button>
+      <button type="button" class="key" data-key="9">9<small>wxyz</small></button>
+
+      <button type="button" class="key" data-key="*">*<small></small></button>
+      <button type="button" class="key" data-key="0">0<small>+</small></button>
+      <button type="button" class="key" data-key="#">#<small></small></button>
+    </div>
+  </main>
 
   <script src="main.js"></script>
 </body>

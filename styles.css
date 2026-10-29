@@ -1,4 +1,35 @@
-* {
+/* ---------- Tokens ---------- */
+:root {
+  --page-bg: #1e1e1e;
+
+  --phone-body: #4a4a4e;
+  --phone-rim: #d4d4d8;
+  --phone-shadow: rgba(3, 0, 0, 0.915);
+  --speaker-dot: #a1a1a6;
+  --brand-bg: #2a2a2d;
+  --brand-fg: #ffffff;
+
+  --lcd-bg: #a0c493;
+  --lcd-border: #1f1f22;
+  --lcd-fg: #16210f;
+  --lcd-divider: #2c3b24;
+
+  --key-bg: #e4e4e7;
+  --key-fg: #010101;
+  --key-sub: #6b6b70;
+  --key-shadow: #2a2a2d;
+
+  --call-bg: #2f9e44;
+  --end-bg: #c92a2a;
+  --action-fg: #ffffff;
+
+  --font: Inter, Arial, Helvetica, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -8,22 +39,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e1e1e;
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  padding: 16px;
+  background: var(--page-bg);
+  font-family: var(--font);
 }
 
-/* Phone body */
+/* ---------- Phone body ---------- */
 .phone {
   width: 230px;
   padding: 14px 18px 22px;
-  background: #4a4a4e;
-  border: 6px solid #d4d4d8;
+  background: var(--phone-body);
+  border: 6px solid var(--phone-rim);
   border-radius: 26px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 16px 36px var(--phone-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  user-select: none;
 }
 
 /* Earpiece */
@@ -36,34 +69,35 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a1a1a6;
+  background: var(--speaker-dot);
 }
 
 /* Brand pill */
 .brand {
-  color: #fff;
+  color: var(--brand-fg);
   font-weight: 700;
   font-size: 11px;
   letter-spacing: 1px;
-  background: #2a2a2d;
+  background: var(--brand-bg);
   padding: 4px 12px;
   border-radius: 5px;
 }
 
-/* LCD screen */
+/* ---------- LCD screen ---------- */
 .screen {
   width: 100%;
   height: 135px;
-  background: #a0c493;
-  border: 2px solid #1f1f22;
+  background: var(--lcd-bg);
+  border: 2px solid var(--lcd-border);
   border-radius: 4px;
   padding: 8px 8px 6px;
   font-size: 11px;
   line-height: 1.4;
-  color: #16210f;
+  color: var(--lcd-fg);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  user-select: text;
 }
 
 .screen-message {
@@ -73,25 +107,38 @@ body {
 }
 
 .screen-input {
-  border-top: 1px dashed #2c3b24;
+  border-top: 1px dashed var(--lcd-divider);
   padding-top: 3px;
   min-height: 18px;
   font-size: 12px;
   word-break: break-all;
 }
 
-/* Buttons */
-.controls,
+/* ---------- Buttons ---------- */
+/* .controls,
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 7px 9px;
   width: 100%;
+} */
+
+.controls,
+.keypad {
+  display: flex;
+  flex-wrap: wrap;   /* without this, every button squeezes into one row */
+  gap: 7px 9px;      /* row-gap column-gap, same as before */
+  width: 100%;
+}
+
+.controls > *,
+.keypad > * {
+  /* 3 per row: subtract the two 9px column gaps, then divide by 3 */
+  flex: 0 0 calc((100% - 2 * 9px) / 3);
 }
 
 .controls {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin: 4px 0;
 }
 
 button {
@@ -100,16 +147,21 @@ button {
   padding: 5px 0;
   font-family: inherit;
   font-size: 14px;
-  background: #e4e4e7;
-  color: #1f1f22;
-  cursor: pointer;
-  box-shadow: 0 2px 0 #2a2a2d;
   line-height: 1.1;
+  background: var(--key-bg);
+  color: var(--key-fg);
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--key-shadow);
 }
 
 button:active {
   transform: translateY(2px);
-  box-shadow: 0 0 0 #2a2a2d;
+  box-shadow: 0 0 0 var(--key-shadow);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--lcd-bg);
+  outline-offset: 2px;
 }
 
 .controls button {
@@ -119,19 +171,19 @@ button:active {
 
 .key small {
   display: block;
-  font-size: 7px;
-  color: #6b6b70;
   min-height: 8px;
   margin-top: 1px;
+  font-size: 7px;
+  color: var(--key-sub);
   text-transform: uppercase;
 }
 
 .call {
-  background: #2f9e44;
-  color: #fff;
+  background: var(--call-bg);
+  color: var(--action-fg);
 }
 
 .end {
-  background: #c92a2a;
-  color: #fff;
+  background: var(--end-bg);
+  color: var(--action-fg);
 }
